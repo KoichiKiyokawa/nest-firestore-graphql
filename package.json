@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "main": "dist/main.js",
   "scripts": {
-    "prepare": "node -e 'process.exit(process.env.NODE_ENV === `production` ? 1 : 0)' | husky install",
+    "prepare": "node -e 'process.exit(process.env.NODE_ENV === `production` ? 0 : 1)' || husky install",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
