@@ -2,7 +2,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Post {
-  @Field((type) => ID)
+  @Field(() => ID)
   id!: string;
 
   @Field()
@@ -10,4 +10,7 @@ export class Post {
 
   @Field({ nullable: true })
   body!: string;
+
+  @Field()
+  userId!: string;
 }
