@@ -1,5 +1,5 @@
-import { Resolver } from '@nestjs/graphql';
-import { User } from './user.model';
+import { Resolver } from '@nestjs/graphql'
+import { User } from './user.model'
 
 @Resolver(() => User)
 export class UserResolver {}

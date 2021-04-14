@@ -1,16 +1,16 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
 export class Post {
   @Field(() => ID)
-  id!: string;
+  id!: string
 
   @Field()
-  title!: string;
+  title!: string
 
   @Field({ nullable: true })
-  body!: string;
+  body!: string
 
   @Field()
-  userId!: string;
+  userId!: string
 }
