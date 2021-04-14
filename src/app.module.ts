@@ -8,8 +8,7 @@ import { UserModule } from './user/user.module'
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile:
-        process.env.NODE_ENV === 'production' ? true : 'schema.gql',
+      autoSchemaFile: process.env.NODE_ENV === 'production' ? true : 'schema.gql',
       debug: true,
       playground: true,
     }),
