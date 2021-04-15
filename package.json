@@ -12,8 +12,9 @@
     "prepare": "node -e 'process.exit(process.env.NODE_ENV === `production` ? 0 : 1)' || husky install"
   },
   "lint-staged": {
-    "web/**/*.{js,ts,json,svelte}": "prettier --write",
-    "web/**/*.{js,ts,svelte}": "eslint --max-warnings 0 --fix"
+    "*.{js,ts,json,svelte}": "prettier --write",
+    "*.{js,ts,svelte}": "eslint --max-warnings 0 --fix",
+    "*.svelte": "svelte-check --fail-on-warnings --fail-on-hints"
   },
   "devDependencies": {
     "husky": "^6.0.0",
