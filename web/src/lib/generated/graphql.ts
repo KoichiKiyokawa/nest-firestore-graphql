@@ -71,9 +71,32 @@ export type GetPostQuery = { __typename?: 'Query' } & {
     }
 }
 
+export type GetPostsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetPostsQuery = { __typename?: 'Query' } & {
+  posts: Array<
+    { __typename?: 'Post' } & Pick<Post, 'id' | 'title' | 'body'> & {
+        user: { __typename?: 'User' } & Pick<User, 'id' | 'name'>
+      }
+  >
+}
+
 export const GetPost = gql`
   query getPost($id: String!) {
     post(id: $id) {
+      id
+      title
+      body
+      user {
+        id
+        name
+      }
+    }
+  }
+`
+export const GetPosts = gql`
+  query getPosts {
+    posts {
       id
       title
       body

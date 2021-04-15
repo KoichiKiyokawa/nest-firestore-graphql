@@ -2,4 +2,6 @@
   import '../app.postcss'
 </script>
 
-<slot />
+<main class="mx-4 mt-4">
+  <slot />
+</main>

@@ -1,16 +1,16 @@
-name: Deploy to App Engine
+name: Deploy web to App Engine
 
 on:
   push:
     branches: [main]
-    paths: ['server/**']
+    paths: ['web/**']
 
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: server
+        working-directory: web
 
     steps:
       - uses: actions/checkout@v2
@@ -22,4 +22,4 @@ jobs:
       - uses: google-github-actions/deploy-appengine@v0.3.1
         with:
           credentials: ${{ secrets.GCP_SA_KEY }}
-          working_directory: server
+          working_directory: web

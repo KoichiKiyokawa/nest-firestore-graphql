@@ -1,19 +1,18 @@
 <script lang="ts">
-  import { ApolloClient, InMemoryCache } from '@apollo/client'
-  import { GetPost, GetPostQuery } from 'src/generated/graphql'
   import { onMount } from 'svelte'
+  import { GetPosts } from '$lib/generated/graphql'
+  import type { GetPostsQuery } from '$lib/generated/graphql'
 
-  const client = new ApolloClient({
-    uri: 'http"//localhost:3000/graphql',
-    cache: new InMemoryCache(),
-  })
-
-  let post: GetPostQuery['post']
-
+  let posts: GetPostsQuery['posts'] = []
   onMount(async () => {
-    const { data, errors } = await client.query<GetPostQuery>({ query: GetPost })
+    const { client } = await import('$lib/modules/apollo')
+    const { data, errors } = await client.query<GetPostsQuery>({
+      query: GetPosts,
+    })
+
     if (errors) console.error(errors)
-    post = data.post
+
+    posts = data.posts
   })
 </script>
 
@@ -21,9 +20,11 @@
   <title>Hello world!</title>
 </svelte:head>
 
-<main>
-  <h1>{post.title}</h1>
-  <p>著者：{post.user.name}</p>
-
-  <p>{post.body}</p>
-</main>
+<h1>投稿一覧</h1>
+{#each posts as post}
+  <a href={post.id} class="block hover:text-blue-500">
+    <span>{post.title}</span>
+    <span>著者：{post?.user?.name}</span>
+    <span>{post.body}</span>
+  </a>
+{/each}

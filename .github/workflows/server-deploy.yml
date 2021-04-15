@@ -1,0 +1,25 @@
+name: Deploy server to App Engine
+
+on:
+  push:
+    branches: [main]
+    paths: ['server/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint:check
+      - run: npm test
+      - run: npm run build
+      - uses: google-github-actions/deploy-appengine@v0.3.1
+        with:
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          working_directory: server
