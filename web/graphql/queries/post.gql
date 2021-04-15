@@ -1,0 +1,11 @@
+query getPost($id: String!) {
+	post(id: $id) {
+		id
+		title
+		body
+		user {
+			id
+			name
+		}
+	}
+}

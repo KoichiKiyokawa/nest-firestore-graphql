@@ -5,7 +5,8 @@
   "private": true,
   "license": "UNLICENSED",
   "workspaces": [
-    "server"
+    "server",
+    "web"
   ],
   "scripts": {
     "prepare": "node -e 'process.exit(process.env.NODE_ENV === `production` ? 0 : 1)' || husky install",
