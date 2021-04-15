@@ -15,11 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: npm run format:check
-      - run: npm run lint:check
-      - run: npm test
+      - run: npm run lint
       - run: npm run build
-      - uses: google-github-actions/deploy-appengine@v0.3.1
-        with:
-          credentials: ${{ secrets.GCP_SA_KEY }}
-          working_directory: web
+      # - uses: google-github-actions/deploy-appengine@v0.3.1
+      #   with:
+      #     credentials: ${{ secrets.GCP_SA_KEY }}
+      #     working_directory: web

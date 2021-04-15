@@ -25,6 +25,19 @@ module.exports = {
     target: '#svelte',
 
     vite: {
+      resolve: {
+        alias: {
+          tslib: 'tslib/tslib.es6.js',
+        },
+      },
+      optimizeDeps: {
+        exclude: ['react'],
+      },
+      build: {
+        rollupOptions: {
+          external: ['react'],
+        },
+      },
       ssr: {
         noExternal: Object.keys(pkg.dependencies || {}),
       },
