@@ -7,7 +7,7 @@ function PostShow() {
 
   const [result] = useQuery<GetPostQuery, GetPostQueryVariables>({
     query: GetPost,
-    variables: { id: [].concat(router.query.id)[0] },
+    variables: { id: router.query.id as string },
   })
 
   return (

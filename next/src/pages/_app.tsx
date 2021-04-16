@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app'
-import { withUrqlClient } from 'next-urql'
+import { NextComponentType, withUrqlClient } from 'next-urql'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,4 +12,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 export default withUrqlClient(() => ({
   url: 'https://nest-firestore-graphql-dot-kiyo-dev-944.an.r.appspot.com/graphql',
-}))(MyApp)
+}))(MyApp as NextComponentType)
