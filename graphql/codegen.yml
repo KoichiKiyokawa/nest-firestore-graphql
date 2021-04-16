@@ -8,7 +8,10 @@ generates:
       - 'typescript-operations'
       # - 'typescript-graphql-files-modules' # graphqlファイルをtsファイルからインポートしたい場合に使うっぽい
       - 'typescript-document-nodes'
-      - 'fragment-matcher'
+      # - 'fragment-matcher'
+      # - typescript-urql
+    config:
+      gqlImport: '@urql/core#gql'
   # apollo拡張機能のために必要
   # ../graphql.schema.json:
   #   plugins:

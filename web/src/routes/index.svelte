@@ -2,15 +2,13 @@
   import { onMount } from 'svelte'
   import { GetPosts } from '$lib/generated/graphql'
   import type { GetPostsQuery } from '$lib/generated/graphql'
+  import { client } from '$lib/modules/urql'
 
   let posts: GetPostsQuery['posts'] = []
   onMount(async () => {
-    const { client } = await import('$lib/modules/apollo')
-    const { data, errors } = await client.query<GetPostsQuery>({
-      query: GetPosts,
-    })
+    const { data, error } = await client.query<GetPostsQuery>(GetPosts).toPromise()
 
-    if (errors) console.error(errors)
+    if (error) console.error(error)
 
     posts = data.posts
   })

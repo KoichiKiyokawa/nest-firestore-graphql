@@ -3,15 +3,13 @@
   import { GetPost } from '$lib/generated/graphql'
   import type { GetPostQuery, GetPostQueryVariables } from '$lib/generated/graphql'
   import { onMount } from 'svelte'
+  import { client } from '$lib/modules/urql'
 
   let post: GetPostQuery['post'] | undefined = undefined
   onMount(async () => {
-    const { client } = await import('$lib/modules/apollo')
-
-    const { data } = await client.query<GetPostQuery, GetPostQueryVariables>({
-      query: GetPost,
-      variables: { id: $page.params.id },
-    })
+    const { data } = await client
+      .query<GetPostQuery, GetPostQueryVariables>(GetPost, { id: $page.params.id })
+      .toPromise()
     post = data.post
   })
 </script>

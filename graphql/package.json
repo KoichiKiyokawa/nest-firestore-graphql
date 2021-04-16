@@ -17,6 +17,7 @@
     "@graphql-codegen/typescript": "1.21.1",
     "@graphql-codegen/typescript-document-nodes": "1.17.10",
     "@graphql-codegen/typescript-graphql-files-modules": "1.18.1",
-    "@graphql-codegen/typescript-operations": "1.17.15"
+    "@graphql-codegen/typescript-operations": "1.17.15",
+    "@graphql-codegen/typescript-urql": "^2.0.5"
   }
 }
