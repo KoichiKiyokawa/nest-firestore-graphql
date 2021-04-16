@@ -1,17 +1,22 @@
-<script lang="ts">
-  import { onMount } from 'svelte'
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit'
   import { GetPosts } from '$lib/generated/graphql'
-  import type { GetPostsQuery } from '$lib/generated/graphql'
   import { client } from '$lib/modules/urql'
+  import type { GetPostsQuery } from '$lib/generated/graphql'
 
-  let posts: GetPostsQuery['posts'] = []
-  onMount(async () => {
+  export const load: Load = async () => {
     const { data, error } = await client.query<GetPostsQuery>(GetPosts).toPromise()
 
     if (error) console.error(error)
 
-    posts = data.posts
-  })
+    return {
+      props: { posts: data.posts },
+    }
+  }
+</script>
+
+<script lang="ts">
+  export let posts: GetPostsQuery['posts'] = []
 </script>
 
 <svelte:head>

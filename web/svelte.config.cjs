@@ -33,6 +33,7 @@ module.exports = {
       ssr: {
         noExternal: Object.keys(pkg.dependencies || {}),
       },
+      plugins: [require('rollup-plugin-visualizer').visualizer()],
     },
   },
 }
