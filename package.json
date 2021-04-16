@@ -13,8 +13,9 @@
   },
   "lint-staged": {
     "*.{js,cjs,ts,json,svelte}": "prettier --write",
-    "*.{js,ts,svelte}": "eslint --max-warnings 0 --fix",
-    "*.svelte": "svelte-check --fail-on-warnings --fail-on-hints"
+    "web/**/*.{js,ts,svelte}": "eslint --max-warnings 0 --fix",
+    "*.svelte": "svelte-check --fail-on-warnings --fail-on-hints",
+    "server/**/*.{js,ts,svelte}": "cd server && eslint --max-warnings 0 --fix"
   },
   "devDependencies": {
     "husky": "^6.0.0",
