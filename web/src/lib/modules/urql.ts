@@ -1,5 +1,6 @@
-import 'isomorphic-fetch'
+import fetch from 'cross-fetch'
 import { createClient, dedupExchange, cacheExchange, fetchExchange, ssrExchange } from '@urql/core'
+import { serverURL } from '$lib/env'
 
 const isServerSide = typeof window === 'undefined'
 
@@ -10,10 +11,8 @@ const ssr = ssrExchange({
 })
 
 export const client = createClient({
-  url:
-    process.env.NODE_ENV === 'production'
-      ? 'https://nest-firestore-graphql-dot-kiyo-dev-944.an.r.appspot.com/graphql'
-      : 'http://localhost:3000/graphql',
+  fetch,
+  url: serverURL,
   exchanges: [
     dedupExchange,
     cacheExchange,
