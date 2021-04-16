@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "eslint": "eslint --fix --ignore-path .gitignore src/**/*.{ts,tsx} && ",
+    "fmt": "prettier --write . --ignore-path .gitignore",
+    "lint": "npmrun eslint && npm run fmt"
   },
   "dependencies": {
     "graphql": "^15.5.0",
@@ -18,8 +21,13 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "autoprefixer": "^10.2.5",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
     "postcss": "^8.2.10",
+    "prettier": "^2.2.1",
     "tailwindcss": "^2.1.1"
   }
 }
