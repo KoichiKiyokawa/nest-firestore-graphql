@@ -4,8 +4,8 @@
   import { client } from '$lib/modules/urql'
   import type { GetPostsQuery } from '$lib/generated/graphql'
 
-  export const load: Load = async () => {
-    const { data, error } = await client.query<GetPostsQuery>(GetPosts).toPromise()
+  export const load: Load = async ({ fetch }) => {
+    const { data, error } = await client(fetch).query<GetPostsQuery>(GetPosts).toPromise()
 
     if (error) console.error(error)
 

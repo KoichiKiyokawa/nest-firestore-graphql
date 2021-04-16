@@ -4,8 +4,8 @@
   import type { GetPostQuery, GetPostQueryVariables } from '$lib/generated/graphql'
   import { client } from '$lib/modules/urql'
 
-  export const load: Load = async ({ page }) => {
-    const { data, error } = await client
+  export const load: Load = async ({ page, fetch }) => {
+    const { data, error } = await client(fetch)
       .query<GetPostQuery, GetPostQueryVariables>(GetPost, { id: page.params.id })
       .toPromise()
 
