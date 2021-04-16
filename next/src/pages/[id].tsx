@@ -4,7 +4,6 @@ import { GetPost, GetPostQuery, GetPostQueryVariables } from '~/generated/graphq
 
 function PostShow() {
   const router = useRouter()
-  console.log(router.query)
 
   const [result] = useQuery<GetPostQuery, GetPostQueryVariables>({
     query: GetPost,
