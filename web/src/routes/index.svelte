@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-  <title>Hello world!</title>
+  <title>Hello world!!!</title>
 </svelte:head>
 
 <h1>投稿一覧</h1>
